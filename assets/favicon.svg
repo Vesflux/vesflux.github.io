@@ -8,5 +8,5 @@
     </radialGradient>
   </defs>
   <rect width="64" height="64" rx="20" fill="url(#g)"/>
-  <path d="M18 17h8l6 28 6-28h8L37 49H27L18 17z" fill="#fff"/>
+  <path d="M20 15h13c7 0 11 3 11 8 0 3-2 6-5 7 4 1 7 4 7 9 0 7-5 10-13 10H20V15zm9 13h4c3 0 5-1 5-4s-2-4-5-4h-4v8zm0 15h5c4 0 6-2 6-5 0-4-3-5-7-5h-4v10z" fill="#fff"/>
 </svg>
