@@ -10,7 +10,7 @@
   <meta property="og:type" content="website">
   <title>Baan</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20260629-baan-2">
+  <link rel="stylesheet" href="styles.css?v=20260629-baan-3">
 </head>
 <body>
   <canvas id="field" aria-hidden="true"></canvas>
@@ -28,9 +28,9 @@
       </span>
     </a>
     <nav class="nav-links" aria-label="Primary navigation">
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
+      <a href="#about" data-i18n="navAbout">About</a>
+      <a href="#projects" data-i18n="navProjects">Projects</a>
+      <a href="#contact" data-i18n="navContact">Contact</a>
     </nav>
   </header>
 
@@ -38,51 +38,51 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">Web3 experiments / weird utilities / minimal interfaces</p>
+          <p class="eyebrow" data-i18n="heroEyebrow">Web3 experiments / weird utilities / minimal interfaces</p>
           <h1 id="hero-title">Baan</h1>
-          <p class="lead">
+          <p class="lead" data-i18n="heroLead">
             I build crypto-native tools, chain storage experiments, and small heuristic systems with a taste for sharp interfaces and strange mechanics.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#projects">Explore projects</a>
+            <a class="button primary" href="#projects" data-i18n="heroCta">Explore projects</a>
             <a class="button ghost" href="https://x.com/Baanhah" rel="noreferrer" target="_blank">X @Baanhah</a>
           </div>
         </div>
 
-        <aside class="identity-panel" aria-label="Profile">
+        <aside class="identity-panel" aria-label="Profile" data-i18n-aria-label="profileAria">
           <div class="portrait">
             <div class="portrait-core">
-              <img class="portrait-photo" src="https://github.com/Vesflux.png?size=320" alt="Baan avatar">
+              <img class="portrait-photo" src="https://github.com/Vesflux.png?size=320" alt="Baan avatar" data-i18n-alt="portraitAlt">
               <span>B</span>
             </div>
             <div class="portrait-ring one"></div>
             <div class="portrait-ring two"></div>
           </div>
           <div class="identity-meta">
-            <span>Alias</span>
+            <span data-i18n="profileAlias">Alias</span>
             <strong>Baan</strong>
           </div>
           <div class="identity-meta">
-            <span>Handle</span>
+            <span data-i18n="profileHandle">Handle</span>
             <strong>@Baanhah</strong>
           </div>
           <div class="status-line">
             <span></span>
-            Building in public
+            <strong data-i18n="profileStatus">Building in public</strong>
           </div>
         </aside>
       </div>
     </section>
 
     <section class="section about" id="about" aria-labelledby="about-title">
-      <div class="section-label">About</div>
+      <div class="section-label" data-i18n="aboutLabel">About</div>
       <div class="about-layout">
-        <h2 id="about-title">Dark tools, bright signals.</h2>
+        <h2 id="about-title" data-i18n="aboutTitle">Dark tools, bright signals.</h2>
         <div class="about-text">
-          <p>
+          <p data-i18n="aboutBodyOne">
             Baan is the builder nickname behind Vesflux: focused on Web3 utilities, protocol-adjacent experiments, and compact systems that do one thing with conviction.
           </p>
-          <p>
+          <p data-i18n="aboutBodyTwo">
             The work leans experimental but practical: on-chain storage, no-train attention heuristics, minimal frontends, and anything that feels like it should exist for curious networks.
           </p>
         </div>
@@ -92,10 +92,10 @@
     <section class="projects" id="projects" aria-labelledby="projects-title">
       <div class="projects-head">
         <div>
-          <div class="section-label">Projects</div>
-          <h2 id="projects-title">Repos in motion.</h2>
+          <div class="section-label" data-i18n="projectsLabel">Projects</div>
+          <h2 id="projects-title" data-i18n="projectsTitle">Repos in motion.</h2>
         </div>
-        <div class="repo-status" id="repo-status">Loading GitHub repos...</div>
+        <div class="repo-status" id="repo-status" data-i18n="projectsLoading">Loading GitHub repos...</div>
       </div>
 
       <div class="marquee-shell" aria-live="polite">
@@ -106,8 +106,8 @@
 
     <section class="section contact" id="contact" aria-labelledby="contact-title">
       <div>
-        <div class="section-label">Contact</div>
-        <h2 id="contact-title">Ping the signal.</h2>
+        <div class="section-label" data-i18n="contactLabel">Contact</div>
+        <h2 id="contact-title" data-i18n="contactTitle">Ping the signal.</h2>
       </div>
       <div class="contact-grid">
         <a class="contact-item" href="https://x.com/Baanhah" rel="noreferrer" target="_blank">
@@ -115,11 +115,11 @@
           <strong>@Baanhah</strong>
         </a>
         <a class="contact-item" href="mailto:0xbaan@gmail.com">
-          <span>Email</span>
+          <span data-i18n="emailLabel">Email</span>
           <strong>0xbaan@gmail.com</strong>
         </a>
         <a class="contact-item" href="mailto:vesflux@gmail.com">
-          <span>Email</span>
+          <span data-i18n="emailLabel">Email</span>
           <strong>vesflux@gmail.com</strong>
         </a>
       </div>
@@ -128,9 +128,9 @@
 
   <footer class="site-footer">
     <span>Baan / Vesflux</span>
-    <span>Built for strange networks.</span>
+    <span data-i18n="footerLine">Built for strange networks.</span>
   </footer>
 
-  <script src="script.js?v=20260629-baan-2"></script>
+  <script src="script.js?v=20260629-baan-3"></script>
 </body>
 </html>

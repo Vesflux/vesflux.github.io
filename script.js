@@ -1,5 +1,92 @@
 const GITHUB_USER = 'Vesflux';
 const MIN_CARDS_PER_ROW = 20;
+const TRANSLATIONS = {
+  en: {
+    pageTitle: 'Baan',
+    metaDescription: 'Baan builds Web3 experiments, chain-native tools, and tiny intelligent systems.',
+    ogDescription: 'Dark neon personal homepage for Baan / Vesflux.',
+    navAbout: 'About',
+    navProjects: 'Projects',
+    navContact: 'Contact',
+    heroEyebrow: 'Web3 experiments / weird utilities / minimal interfaces',
+    heroLead: 'I build crypto-native tools, chain storage experiments, and small heuristic systems with a taste for sharp interfaces and strange mechanics.',
+    heroCta: 'Explore projects',
+    profileAria: 'Profile',
+    portraitAlt: 'Baan avatar',
+    profileAlias: 'Alias',
+    profileHandle: 'Handle',
+    profileStatus: 'Building in public',
+    aboutLabel: 'About',
+    aboutTitle: 'Dark tools, bright signals.',
+    aboutBodyOne: 'Baan is the builder nickname behind Vesflux: focused on Web3 utilities, protocol-adjacent experiments, and compact systems that do one thing with conviction.',
+    aboutBodyTwo: 'The work leans experimental but practical: on-chain storage, no-train attention heuristics, minimal frontends, and anything that feels like it should exist for curious networks.',
+    projectsLabel: 'Projects',
+    projectsTitle: 'Repos in motion.',
+    projectsLoading: 'Loading GitHub repos...',
+    projectsLoaded: count => `${count} repositories fetched from GitHub. Hover a row to pause.`,
+    projectsFallback: 'Using local project fallback. GitHub API may be rate-limited.',
+    contactLabel: 'Contact',
+    contactTitle: 'Ping the signal.',
+    emailLabel: 'Email',
+    footerLine: 'Built for strange networks.',
+    fallbackSummary: 'A compact public experiment from Baan. Open it to inspect the repo, source, and latest direction.',
+    stars: count => `${count || 0} stars`,
+    openRepo: name => `Open ${name}`
+  },
+  zh: {
+    pageTitle: 'Baan',
+    metaDescription: 'Baan 构建 Web3 实验、链上原生工具和小型智能系统。',
+    ogDescription: 'Baan / Vesflux 的暗色霓虹个人主页。',
+    navAbout: '关于',
+    navProjects: '项目',
+    navContact: '联系',
+    heroEyebrow: 'Web3 实验 / 奇妙工具 / 极简界面',
+    heroLead: '我在构建加密原生工具、链上存储实验和小型启发式系统，偏爱锋利的界面与有趣的机制。',
+    heroCta: '查看项目',
+    profileAria: '个人资料',
+    portraitAlt: 'Baan 头像',
+    profileAlias: '昵称',
+    profileHandle: '账号',
+    profileStatus: '公开构建中',
+    aboutLabel: '关于',
+    aboutTitle: '暗色工具，明亮信号。',
+    aboutBodyOne: 'Baan 是 Vesflux 背后的 builder 昵称：专注于 Web3 工具、协议周边实验，以及目标明确的小型系统。',
+    aboutBodyTwo: '作品偏实验但实用：链上存储、免训练注意力启发式、极简前端，以及那些感觉就该存在于好奇网络里的东西。',
+    projectsLabel: '项目',
+    projectsTitle: '流动中的仓库。',
+    projectsLoading: '正在加载 GitHub 仓库...',
+    projectsLoaded: count => `已从 GitHub 获取 ${count} 个仓库。悬停项目行可暂停滚动。`,
+    projectsFallback: '正在使用本地项目备用数据，GitHub API 可能被限流。',
+    contactLabel: '联系',
+    contactTitle: '捕捉信号。',
+    emailLabel: '邮箱',
+    footerLine: '为奇妙网络而构建。',
+    fallbackSummary: '一个来自 Baan 的公开小实验。打开它可以查看仓库、源码和最新方向。',
+    stars: count => `${count || 0} 星`,
+    openRepo: name => `打开 ${name}`
+  }
+};
+
+const currentLang = resolveLanguage();
+const i18n = TRANSLATIONS[currentLang];
+const KNOWN_REPO_SUMMARIES = {
+  VinuStorage: {
+    en: 'Browser-based file vault for VinuChain. It packages files, optionally encrypts them, and stores chunks directly in transaction calldata.',
+    zh: '面向 VinuChain 的浏览器文件保险库：打包文件、可选加密，并把分片直接写入交易 calldata。'
+  },
+  'No-Train-Get-Attention': {
+    en: 'Tiny Python experiment for generating attention-like token weights without training a model.',
+    zh: '一个小型 Python 实验：不训练模型，也能生成类似注意力机制的 token 权重。'
+  },
+  'Magnet-MultiThreading-Miner': {
+    en: 'Magnet multi-threading miner experiment with a compact repo surface and direct source inspection.',
+    zh: 'Magnet 多线程挖矿实验：仓库结构紧凑，适合直接查看源码和实现思路。'
+  },
+  'vesflux.github.io': {
+    en: 'Dark neon personal surface for Baan with an interactive background, live GitHub project reels, and direct contact paths.',
+    zh: 'Baan 的暗色霓虹个人主页：互动背景、GitHub 项目滚动展示和直接联系入口。'
+  }
+};
 
 const fallbackRepos = [
   {
@@ -9,7 +96,7 @@ const fallbackRepos = [
     language: 'HTML',
     stargazers_count: 0,
     updated_at: '2026-01-19T00:01:00Z',
-    summary: 'Browser-based file vault for VinuChain. It packages files, optionally encrypts them, and stores chunks directly in transaction calldata.'
+    summary: KNOWN_REPO_SUMMARIES.VinuStorage
   },
   {
     name: 'No-Train-Get-Attention',
@@ -18,7 +105,7 @@ const fallbackRepos = [
     language: 'Python',
     stargazers_count: 0,
     updated_at: '2026-01-19T00:01:00Z',
-    summary: 'Tiny Python experiment for generating attention-like token weights without training a model.'
+    summary: KNOWN_REPO_SUMMARIES['No-Train-Get-Attention']
   },
   {
     name: 'vesflux.github.io',
@@ -27,7 +114,7 @@ const fallbackRepos = [
     language: 'CSS',
     stargazers_count: 0,
     updated_at: new Date().toISOString(),
-    summary: 'Dark neon personal surface for Baan with an interactive background, live GitHub project reels, and direct contact paths.'
+    summary: KNOWN_REPO_SUMMARIES['vesflux.github.io']
   }
 ];
 
@@ -44,6 +131,41 @@ const particles = Array.from({ length: 86 }, (_, i) => ({
   phase: Math.random() * Math.PI * 2,
   hue: i % 3
 }));
+
+function resolveLanguage() {
+  const languages = navigator.languages?.length ? navigator.languages : [navigator.language || 'en'];
+  return languages.some(language => language.toLowerCase().startsWith('zh')) ? 'zh' : 'en';
+}
+
+function translate(key, ...args) {
+  const value = i18n[key] ?? TRANSLATIONS.en[key];
+  return typeof value === 'function' ? value(...args) : value;
+}
+
+function localized(value) {
+  if (value && typeof value === 'object') return value[currentLang] || value.en || value.zh || '';
+  return value || '';
+}
+
+function repoSummarySource(repo) {
+  return KNOWN_REPO_SUMMARIES[repo.name] || repo.description || repo.summary;
+}
+
+function applyTranslations() {
+  document.documentElement.lang = currentLang === 'zh' ? 'zh-CN' : 'en';
+  document.title = translate('pageTitle');
+  document.querySelector('meta[name="description"]')?.setAttribute('content', translate('metaDescription'));
+  document.querySelector('meta[property="og:description"]')?.setAttribute('content', translate('ogDescription'));
+  document.querySelectorAll('[data-i18n]').forEach(element => {
+    element.textContent = translate(element.dataset.i18n);
+  });
+  document.querySelectorAll('[data-i18n-aria-label]').forEach(element => {
+    element.setAttribute('aria-label', translate(element.dataset.i18nAriaLabel));
+  });
+  document.querySelectorAll('[data-i18n-alt]').forEach(element => {
+    element.setAttribute('alt', translate(element.dataset.i18nAlt));
+  });
+}
 
 function resizeCanvas() {
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -126,12 +248,17 @@ function stripMarkdown(markdown = '') {
 }
 
 function summarize(text = '', fallback = '') {
-  const clean = stripMarkdown(text || fallback);
-  if (!clean) return 'A compact public experiment from Baan. Open it to inspect the repo, source, and latest direction.';
+  const clean = stripMarkdown(text || localized(fallback));
+  if (!clean) return translate('fallbackSummary');
   return clean.length > 168 ? `${clean.slice(0, 168).trim()}...` : clean;
 }
 
 async function fetchReadmeSummary(repo) {
+  const fallback = repoSummarySource(repo);
+  if (currentLang === 'zh' && KNOWN_REPO_SUMMARIES[repo.name]?.zh) {
+    return localized(KNOWN_REPO_SUMMARIES[repo.name]);
+  }
+
   try {
     const rootResponse = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${repo.name}/contents`);
     if (!rootResponse.ok) throw new Error('Repository contents unavailable');
@@ -142,9 +269,9 @@ async function fetchReadmeSummary(repo) {
     if (!readme) throw new Error('README unavailable');
     const readmeResponse = await fetch(readme.download_url);
     if (!readmeResponse.ok) throw new Error('README download unavailable');
-    return summarize(await readmeResponse.text(), repo.description || repo.summary);
+    return summarize(await readmeResponse.text(), fallback);
   } catch (error) {
-    return summarize(repo.description || repo.summary);
+    return summarize('', fallback);
   }
 }
 
@@ -185,7 +312,7 @@ function createCard(repo, index) {
   card.href = projectUrl(repo);
   card.target = '_blank';
   card.rel = 'noreferrer';
-  card.setAttribute('aria-label', `Open ${repo.name}`);
+  card.setAttribute('aria-label', translate('openRepo', repo.name));
 
   top.className = 'project-top';
   indexEl.className = 'project-index';
@@ -198,11 +325,11 @@ function createCard(repo, index) {
   title.textContent = repo.name;
 
   desc.className = 'project-desc';
-  desc.textContent = repo.summary;
+  desc.textContent = localized(repo.summary);
 
   stats.className = 'project-stats';
   year.textContent = new Date(repo.updated_at).getFullYear();
-  stars.textContent = `${repo.stargazers_count || 0} stars`;
+  stars.textContent = translate('stars', repo.stargazers_count);
   stats.append(year, stars);
 
   card.append(top, title, desc, stats);
@@ -233,10 +360,10 @@ async function loadRepos() {
       summary: await fetchReadmeSummary(repo)
     })));
     renderRows(enriched);
-    statusEl.textContent = `${enriched.length} repositories fetched from GitHub. Hover a row to pause.`;
+    statusEl.textContent = translate('projectsLoaded', enriched.length);
   } catch (error) {
     renderRows(fallbackRepos);
-    statusEl.textContent = 'Using local project fallback. GitHub API may be rate-limited.';
+    statusEl.textContent = translate('projectsFallback');
   }
 }
 
@@ -247,6 +374,7 @@ window.addEventListener('pointermove', event => {
 
 window.addEventListener('resize', resizeCanvas);
 
+applyTranslations();
 resizeCanvas();
 drawField();
 loadRepos();
